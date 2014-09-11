@@ -1,6 +1,6 @@
-var express = require('express'),
-    morgan  = require('morgan'),
-    path = require('path');
+// Bring in ("require") modules that will be needed in this app.
+var express = require('express'), // web application framework
+    morgan  = require('morgan');  // middleware for logging
 
 // Create a class that will be our main application
 var SimpleStaticServer = function() {
@@ -8,16 +8,17 @@ var SimpleStaticServer = function() {
   // set self to the scope of the class
   var self = this;  
   
-  /*  ================================================================  */
-  /*  App server functions (main app logic here).                       */
-  /*  ================================================================  */
-
   self.app = express();
-  //	self.app.use(connect(connect.basicAuth('j', 'jmjm')))
-  self.app.use(morgan('[:date] :method :url :status'));	// Log requests
-  self.app.use(express.static(path.join(__dirname, 'public')));	// Process static files
+  self.app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+   });
 
-  // Start the server (starts up the sample application).
+  self.app.use(morgan('[:date] :method :url :status'));	// Log requests
+  self.app.use(express.static(__dirname+'/public'));	// Process static files
+
+  // Start the server, the key action being beginning to listen for requests
   self.start = function() {
     /*
      * OpenShift will provide environment variables indicating the IP 
@@ -36,10 +37,7 @@ var SimpleStaticServer = function() {
   };
 }; 
 
-
-/**
- *  main():  Main code.
- */
+// Main code:  instantiate a SimpleStaticServer and start it running
 var sss = new SimpleStaticServer();
 sss.start();
 
