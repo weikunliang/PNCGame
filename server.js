@@ -9,11 +9,11 @@ var SimpleStaticServer = function() {
   var self = this;  
   
   self.app = express();
-  self.app.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next();
-   });
+// self.app.all('*', function(req, res, next) {
+//    res.header("Access-Control-Allow-Origin", "*");
+//    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//    next();
+//   });
 
   self.app.use(morgan('[:date] :method :url :status'));	// Log requests
   self.app.use(express.static(__dirname+'/public'));	// Process static files
