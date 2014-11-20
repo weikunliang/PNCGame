@@ -15,8 +15,8 @@ var SimpleStaticServer = function() {
    });
 
   self.app.use(morgan('[:date] :method :url :status'));	// Log requests
-//  self.app.use(redirectHTTPS);
-//  self.app.get('/fooworld', function(req,res) { res.send("<h1>fooworld</h1>"); };
+  self.app.use(redirectHTTPS);
+  self.app.get('/fooworld', function(req,res) { res.send("<h1>fooworld</h1>"); };
   self.app.use(express.static(__dirname+'/public'));	// Process static files
 
   // Start the server, the key action being beginning to listen for requests
@@ -42,7 +42,7 @@ var SimpleStaticServer = function() {
 var sss = new SimpleStaticServer();
 sss.start();
 
-function redirectSec(req, res, next) {
+function redirectHTTPS(req, res, next) {
         if (req.headers['x-forwarded-proto'] == 'http') { 
             res.redirect('https://' + req.headers.host + req.path);
         } else {
