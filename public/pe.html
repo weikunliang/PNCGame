@@ -1,0 +1,21 @@
+<html>
+<head></head>
+<body>
+<p id="printthis"> Thank you for your order.
+	Please print this page for your records.</p>
+<script type="text/javascript">
+  if(document.getElementById){
+    var pt = document.getElementById('printthis');
+    if(pt && typeof window.print === 'function'){
+      var but = document.createElement('input');
+      but.setAttribute('type','button');
+      but.setAttribute('value','Print this now');
+      but.onclick = function(){
+        window.print();
+      };
+      pt.appendChild(but);
+    }
+  }
+</script>
+</body>
+</html>

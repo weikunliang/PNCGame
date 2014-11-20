@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'>
+	</script>
+  <script type="text/javascript">
+
+  $(function() {    // do once original document loaded and ready
+        $('form[name="eg1"] input').click(function() {
+                $.getJSON("hw4-data.json", function(responseObject, diditwork) {
+                        console.log("ro"+responseObject);
+                        var displayText = 
+                                "There are " 
+                                + responseObject.employees.length 
+                                + " employees:<ol>";
+                        for (var i = 0; i<responseObject.employees.length; i++) {
+                                var employee = responseObject.employees[i];
+                                displayText += "<li>"
+                                                        +employee.firstName + " " 
+                                                        + employee.lastName + "<\/li>";
+                                }
+                        displayText += "<\/ul>";
+                $("#responseArea").html(displayText);
+                } );  // getJSON
+        } );  // click
+  } ); // onReady
+
+  </script>
+
+  <title></title>
+</head>
+
+<body>
+  <form name="eg1" id="eg1">
+    <input type="button" value="Do Load">
+  </form>
+
+  <div id="responseArea"></div>
+</body>
+</html>

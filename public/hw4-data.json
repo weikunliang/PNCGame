@@ -1,0 +1,11 @@
+{
+  "imageButton": "<button type="button" id="display-button" onclick="displayImage()">Get an image!</button>",
+  "button0": "<button type="button" onclick="big1()">bigger!</button><br>",
+  "button1": "<button type="button" onclick="big2()">Bigger!</button><br>",
+  "button2": "<button type="button" onclick="big3()">BIGGER!</button><br>",
+  "button3": "<button type="button" onclick="big4()">BBBBBIIIIGGGEEEERRRRR!</button><br>",
+  "button4": "<button type="button" onclick="norm()">Return to normal size</button>",
+  "button5": "<button type="button" onclick="flipit()">flip it!</button><br>",
+  "button6": "<button type="button" onclick="invertit()">invert it!</button><br>",
+  "button7": "<button type="button" onclick="spinit()">spin it!</button><br>"
+}
