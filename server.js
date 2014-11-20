@@ -15,8 +15,8 @@ var SimpleStaticServer = function() {
    });
 
   self.app.use(morgan('[:date] :method :url :status'));	// Log requests
-  self.app.use(redirectHTTPS);
-  self.app.get('/fooworld', function(req,res) { res.send("<h1>fooworld</h1>"); };
+//  self.app.use(redirectHTTPS);
+//  self.app.get('/fooworld', function(req,res) { res.send("<h1>fooworld</h1>"); };
   self.app.use(express.static(__dirname+'/public'));	// Process static files
 
   // Start the server, the key action being beginning to listen for requests
