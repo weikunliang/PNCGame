@@ -32,7 +32,7 @@ var SimpleStaticServer = function() {
 
     //  Start listening on the specific IP and PORT
     self.app.listen(self.port, self.ipaddress, function() {
-      console.log('%s: Node server started on %s:%d ...',
+      console.log('%s: Glerp server started on %s:%d ...',
                         Date(Date.now() ), self.ipaddress, self.port);
     });
   };
