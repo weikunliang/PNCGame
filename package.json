@@ -16,8 +16,8 @@
     "npm": ">= 1.0.0"
   },
   "dependencies": {
-    "express": "4.8",
-    "morgan": "1.2"
+    "express": "4.13",
+    "morgan": "1.6.1"
   },
   "devDependencies": {},
   "bundleDependencies": [],
