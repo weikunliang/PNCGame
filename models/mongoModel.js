@@ -1,4 +1,4 @@
-/*
+/* Prof Mertz's MongoDB example
  * This model uses the Node.js MongoDB Driver.
  * To install:  npm install mongodb --save
  */
@@ -8,7 +8,7 @@ var mongoClient = require('mongodb').MongoClient;
  * This connection_string is for mongodb running locally.
  * Change nameOfMyDb to reflect the name you want for your database
  */
-var connection_string = 'localhost:27017/wordCollection';
+var connection_string = '127.0.0.1:27017/savedImages';
 /*
  * If OPENSHIFT env variables have values, then this app must be running on 
  * OPENSHIFT.  Therefore use the connection info in the OPENSHIFT environment
@@ -98,6 +98,6 @@ exports.retrieve = function(collection, query, callback) {
 
 
 var doError = function(e) {
-        console.error("ERROR: " + e);
-        throw new Error(e);
-    }
+    console.error("ERROR: " + e);
+    throw new Error(e);
+}

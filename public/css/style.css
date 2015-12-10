@@ -6,7 +6,7 @@ body {
 	font-family: Helvetica;
 }
 
-.artistWaiting, .playerWaiting, .drawScreen, .waitScreen, .header, .artistWaitScreen, .guessScreen, .allSolutionScreen, .solutionScreen {
+.artistWaiting, .playerWaiting, .drawScreen, .waitScreen, .header, .artistWaitScreen, .guessScreen, .allSolutionScreen, .solutionScreen, .disconnect {
 	display: none;
 }
 

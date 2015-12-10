@@ -2,7 +2,6 @@
 	<head>    
 		<meta name="viewport" content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0" />
 		<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>  
-		<script src="/js/app.js"></script>
 		<script src="/js/draw.js"></script>
 		<link rel='stylesheet' href='/css/style.css' />
 		<!-- Notice that socket.io adds a path to its client-side js that is not in /public -->
@@ -15,9 +14,9 @@
 	<body>
 
 		<!-- The initial page of the application -->
-<!-- 		<div class="container header">
+		<div class="container header">
 			<p>Player <div class="usernameArea"></div></p>
-		</div> -->
+		</div>
 
 		<!-- The initial page of the application -->
 		<div class="container initalPage">
@@ -78,6 +77,9 @@
 			<p>What other players said</p>
 			<div id="allAnswers"><ul></ul></div>
 			<button id="nextRound">Start Next Round</button>
+			<p>What other players drew</p>
+			<div id="canvasImage"></div>
+			<!-- <div id="canvasImage"></div> -->
 		</div>
 
 		<!-- The solution screen -->
@@ -87,5 +89,8 @@
 			<p>You got the answer <div id="correct"></div></p>
 		</div>
 
+		<div class="container disconnect">
+			<p>Someone has disconnected</p>
+		</div>
 	</body>
 </html>

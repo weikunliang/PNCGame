@@ -16,11 +16,36 @@ $(document).ready(function(){
 		img.src = dataURL; 
 	}
 
+	function clearCanvas(canvas) {
+		var canvas  = document.getElementById(canvas);
+		var context = canvas.getContext("2d");
+		context.fillStyle = "#ffffff";
+	    context.rect(0, 0, 300, 300);
+	    context.fill();
+	}
+
+	function clearAll() {
+		clearCanvas('main');
+		clearCanvas('solution');
+		clearCanvas('artistSolution');
+		clearCanvas('image');
+	}
+
 	// After the user enters an username and hits submit
 	$('#join').click(function () {
 		username = $('#username').val();
 		socket.emit('welcomePlayer', {name: username});
 	});
+
+	socket.on('displayImg', function (data) {
+		console.log(data.imgs);
+		for(var i=0;i<data.imgs.length; i++) {
+			var image = new Image();
+			image.id = "pic"
+			image.src = data.imgs[i].image;
+			$('#canvasImage').append(image);
+		}
+	})
 
 	socket.on('artistWaiting', function (data) {
 		console.log('Artist Waiting...');
@@ -41,7 +66,10 @@ $(document).ready(function(){
 	});
 
 	socket.on('playerList', function (data) { 
-		$('.currentPlayers ul').append('<li>' + data.newPlayer.username + '</li>');
+		$(".currentPlayers ul").empty();
+		for(var i=0; i<data.players.length; i++) {
+			$('.currentPlayers ul').append('<li>' + data.players[i].username + '</li>');
+		}
 	});
 
 	$('#startGame').click(function() {
@@ -107,6 +135,12 @@ $(document).ready(function(){
 		for(var i=0; i<data.guesses.length; i++) {
 			$('#allAnswers ul').append('<li>' + data.guesses[i] + '</li>');
 		}
+		// for(var i=0;i<data.imgCollection; i++) {
+		// 	var image = new Image();
+		// 	image.id = "pic"
+		// 	image.src = canvas.toDataURL();
+		// 	$('#canvasImage').append(image);
+		// }
 		$('.artistWaitScreen').fadeOut();
 		$('.allSolutionScreen').fadeIn();
 	});
@@ -114,6 +148,29 @@ $(document).ready(function(){
 	$('#nextRound').click(function () {
 		console.log('nextRound');
 		socket.emit('newRound');
+	});
+
+	socket.on('clear', function (data) {
+		clearAll();
+		$('.container').fadeOut();
+		$('.header').fadeIn();
+		$('#answer').val('');
+	});
+
+	socket.on('displayNewRoundGuess', function (data) {
+		$('.waitScreen').fadeIn();
+	});
+
+	socket.on('displayNewRoundArtist', function (data) {
+		$('.drawScreen').fadeIn();
+		$('.guessWord').text(data.word);
+	});
+
+	socket.on('gameDisconnected', function (data) {
+		clearAll();
+		$('.container').fadeOut();
+		$('.disconnect').fadeIn();
+		socket.emit('restart');
 	});
 
 });
