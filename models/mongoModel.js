@@ -97,7 +97,7 @@ exports.retrieve = function(collection, query, callback) {
  };
 
 
-var doError = function(e) {
-    console.error("ERROR: " + e);
-    throw new Error(e);
-}
+// var doError = function(e) {
+//     console.error("ERROR: " + e);
+//     throw new Error(e);
+// }
