@@ -1,0 +1,15 @@
+@font-face {
+    font-family: Helvetica;
+}
+
+body {
+	font-family: Helvetica;
+}
+
+.artistWaiting, .playerWaiting, .drawScreen, .waitScreen, .header, .artistWaitScreen, .guessScreen, .allSolutionScreen, .solutionScreen {
+	display: none;
+}
+
+#main, #image, #solution, #artistSolution {
+	border:1px solid #000000;
+}

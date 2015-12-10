@@ -1,0 +1,91 @@
+<html>
+	<head>    
+		<meta name="viewport" content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0" />
+		<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>  
+		<script src="/js/app.js"></script>
+		<script src="/js/draw.js"></script>
+		<link rel='stylesheet' href='/css/style.css' />
+		<!-- Notice that socket.io adds a path to its client-side js that is not in /public -->
+		<script src="/socket.io/socket.io.js"></script>
+		<!-- This is my example client-side javascript that uses socket.io -->
+		<script src="/js/clientSocket.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+
+		<!-- The initial page of the application -->
+<!-- 		<div class="container header">
+			<p>Player <div class="usernameArea"></div></p>
+		</div> -->
+
+		<!-- The initial page of the application -->
+		<div class="container initalPage">
+			<h1>Pictionary</h1>
+			<h3>Enter Username</h3>
+			<input id="username" type="text" name="username">
+			<button id="join">Join Game</button>
+		</div>
+
+		<!-- The screen where the artist waits -->
+		<div class="container artistWaiting">
+			<h1>Welcome <div class="usernameArea"></div></h1>
+			<h3>You are the artist this round</h3>
+			<p>Click start game when everyone has joined</p>
+			<h3>Players</h3>
+			<div class="currentPlayers"><ul></ul></div>
+			<button id="startGame">Start Game</button>
+		</div>
+
+		<!-- The rest of the player waits for the artist to start-->
+		<div class="container playerWaiting">
+			<h1>Welcome <div class="usernameArea"></div></h1>
+			<h3>You are the player this round</h3>
+			<h3>Players</h3>
+			<div class="currentPlayers"><ul></ul></div>
+			<p>Waiting for the artist this round to start the game</p>
+		</div>
+
+		<!-- The artist is given a word draws the picture -->
+		<div class="container drawScreen">
+			<h3>Your word is: <div class="guessWord"></div></h3>
+			<canvas id="main" width="300" height="300"></canvas><br>
+			<button id="clear">Clear</button>
+			<button id="submit">Submit</button>
+		</div>
+
+		<!-- The rest of the player waits for the artist to finish drawing -->
+		<div class="container waitScreen">
+			<p>Waiting for the artist to draw</p>
+		</div>
+
+		<!-- Artist waits for the player to guess -->
+		<div class="container artistWaitScreen">
+			<p>Waiting for the players to guess</p>
+		</div>
+
+		<!-- Players guess the drawing -->
+		<div class="container guessScreen">
+			<p>Guess drawing</p>
+			<canvas id="image" width="300" height="300"></canvas><br>
+			<input id="answer" type="text" name="answer">
+			<button id="guess">Submit</button>
+		</div>
+
+		<!-- Artist sees what others said -->
+		<div class="container allSolutionScreen">
+			<canvas id="artistSolution" width="300" height="300"></canvas><br>
+			<p>What other players said</p>
+			<div id="allAnswers"><ul></ul></div>
+			<button id="nextRound">Start Next Round</button>
+		</div>
+
+		<!-- The solution screen -->
+		<div class="container solutionScreen">
+			<canvas id="solution" width="300" height="300"></canvas><br>
+			<p>The answer was <div id="answerWord"></div></p>
+			<p>You got the answer <div id="correct"></div></p>
+		</div>
+
+	</body>
+</html>

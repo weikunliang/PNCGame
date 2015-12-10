@@ -1,0 +1,21 @@
+<%- include ./headerPartial.ejs %> <!-- include content from headPartial first -->
+<h1> <%= title %> </h1>
+<table>
+  <tr>
+    <th style="text-align:left">Player Name</th>
+    <th>Score</th>
+    <th style="text-align:right">Rank</th>
+  </tr>
+  <% for (var i=0; i<myPlayers.length; i++) {   %>
+  <tr>
+    <td> <%= myPlayers[i].playerName %> </td>
+    <td style="text-align:center"> <%= myPlayers[i].score %> </td>
+    <td style="text-align:right"> <%= myPlayers[i].rank %> </td>
+  </tr>
+    <% } %> <!--  Close the loop  -->
+</table>
+<% /* Add in the content from footPartial
+    * Notice that since this is a JavaScript comment, it does not create
+    * html code and is not passed to the browser 
+    */ %>
+<% include ./footerPartial.ejs %>
