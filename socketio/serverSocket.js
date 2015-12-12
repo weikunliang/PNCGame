@@ -12,9 +12,20 @@ exports.init = function(io) {
 	var usedWords = [];
 	var oldImages;
 
+	function sendHeartbeat(){
+	    setTimeout(sendHeartbeat, 8000);
+	    io.sockets.emit('ping', { beat : 1 });
+	}
+
+
     // When a new connection is initiated
 	io.sockets.on('connection', function (socket) {
 		console.log('Connection started');
+
+		socket.on('pong', function(data){
+	        console.log("Pong received from client");
+	    });
+	    setTimeout(sendHeartbeat, 8000);
 
 		function getNewWord() {
 			var i = Math.floor((Math.random() * wordCollection.length));

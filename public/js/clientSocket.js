@@ -30,6 +30,10 @@ $(document).ready(function(){
 		clearCanvas('image');
 	}
 
+	socket.on('ping', function(data){
+      socket.emit('pong', {beat: 1});
+    });
+
 	// After the user enters an username and hits submit
 	$('#join').click(function () {
 		username = $('#username').val();
