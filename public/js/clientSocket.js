@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	var socket = io.connect();
+	var socket = io.connect('http://pictionary-weikunliang.rhcloud.com:50000');
 
 	var username;
 	var isArtist;
