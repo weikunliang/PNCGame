@@ -27,7 +27,6 @@ $(document).ready(function(){
 	function clearAll() {
 		clearCanvas('main');
 		clearCanvas('solution');
-		clearCanvas('artistSolution');
 		clearCanvas('image');
 	}
 
@@ -50,7 +49,7 @@ $(document).ready(function(){
 	socket.on('artistWaiting', function (data) {
 		console.log('Artist Waiting...');
 		isArtist = true;
-		$('.initalPage').fadeOut();
+		$('.initialPage').fadeOut();
 		$('.header').fadeIn();
 		$('.artistWaiting').fadeIn();
 		$('.usernameArea').text(data.name);
@@ -59,7 +58,7 @@ $(document).ready(function(){
 	socket.on('playerWaiting', function (data) {
 		console.log('Player Waiting...');
 		isArtist = false;
-		$('.initalPage').fadeOut();
+		$('.initialPage').fadeOut();
 		$('.header').fadeIn();
 		$('.playerWaiting').fadeIn();
 		$('.usernameArea').text(data.name);
@@ -68,7 +67,7 @@ $(document).ready(function(){
 	socket.on('playerList', function (data) { 
 		$(".currentPlayers ul").empty();
 		for(var i=0; i<data.players.length; i++) {
-			$('.currentPlayers ul').append('<li>' + data.players[i].username + '</li>');
+			$('.currentPlayers ul').append('<li class="list-group-item">' + data.players[i].username + '</li>');
 		}
 	});
 
@@ -124,16 +123,15 @@ $(document).ready(function(){
 
 		$('#answerWord').text(data.correctAnswer);
 		if(data.answerCorrect){
-			$('#correct').text("RIGHT");
+			$('.correct').text("RIGHT");
 		} else {
-			$('#correct').text("WRONG");
+			$('.correct').text("WRONG");
 		}
 	});
 
 	socket.on('showPlayerGuesses', function (data) {
-		redrawImage('artistSolution', data.image);
 		for(var i=0; i<data.guesses.length; i++) {
-			$('#allAnswers ul').append('<li>' + data.guesses[i] + '</li>');
+			$('#allAnswers ul').append('<li class="list-group-item">' + data.guesses[i] + '</li>');
 		}
 		// for(var i=0;i<data.imgCollection; i++) {
 		// 	var image = new Image();
