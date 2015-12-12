@@ -16,7 +16,7 @@ window.onload = function() {
 
   function clear() {
     context.fillStyle = "#ffffff";
-    context.rect(0, 0, 300, 300);
+    context.rect(0, 0, canvas.width, canvas.height);
     context.fill();
   }
 
@@ -26,6 +26,7 @@ window.onload = function() {
     context.arc(x,y,1,0,Math.PI*2,true);
     context.fill();
     context.stroke();
+
     context.closePath();
   }
 
@@ -44,9 +45,10 @@ window.onload = function() {
 var clicking = false;
 
 $('#main').mousedown(function(e){
-    clicking = true;
-    lastx = e.pageX - canvas.offsetLeft;  // try substituting 1
-    lasty = e.pageY - canvas.offsetTop;   // or 2 for index for multitouch
+    var rect = document.getElementById('main').getBoundingClientRect();
+    clicking = true; 
+    lastx = (e.pageX - rect.left)/rect.width * canvas.width; 
+    lasty = (e.pageY - rect.top)/rect.height * canvas.height; 
 
     dot(lastx,lasty);
 
@@ -57,10 +59,11 @@ $(document).mouseup(function(e){
 });
 
 $('#main').mousemove(function(e){
+  var rect = document.getElementById('main').getBoundingClientRect();
   if(clicking === false) return;
 
-  var newx = e.pageX - canvas.offsetLeft;
-  var newy = e.pageY - canvas.offsetTop;
+  var newx = (e.pageX - rect.left)/rect.width * canvas.width;
+  var newy = (e.pageY - rect.top)/rect.height * canvas.height;
 
   line(lastx,lasty, newx,newy);
   
@@ -71,9 +74,8 @@ $('#main').mousemove(function(e){
 ///////////////////////////////////////////////////////////////////////////////// TOUCH
 var doOnTouchStart = function(event){                   
   event.preventDefault();  
-  
-  lastx = event.touches[0].clientX - canvas.offsetLeft;  // try substituting 1
-  lasty = event.touches[0].clientY - canvas.offsetTop;   // or 2 for index for multitouch
+  lastx = (event.touches[0].clientX - canvas.offsetLeft)/rect.width * canvas.width;  // try substituting 1
+  lasty = (event.touches[0].clientY - canvas.offsetTop)/rect.height * canvas.height;   // or 2 for index for multitouch
 
   dot(lastx,lasty);
 }
@@ -83,10 +85,11 @@ canvas.addEventListener("touchstart", doOnTouchStart);
 var doOnTouchMove = function(event){                   
   event.preventDefault();                 
 
-  var newx = event.touches[0].clientX - canvas.offsetLeft;
-  var newy = event.touches[0].clientY - canvas.offsetTop;
+  var newx = (event.touches[0].clientX - canvas.offsetLeft)/rect.width * canvas.width;
+  var newy = (event.touches[0].clientY - canvas.offsetTop)/rect.height * canvas.height;
 
   line(lastx,lasty, newx,newy);
+
   
   lastx = newx;
   lasty = newy;
