@@ -9,10 +9,10 @@ body {
     font-family: Futura;
 }
 
-/*.artistWaiting, .playerWaiting, .drawScreen, .waitScreen, .header, .artistWaitScreen, .guessScreen, .allSolutionScreen, .solutionScreen, .disconnect {
+.artistWaiting, .playerWaiting, .drawScreen, .waitScreen, .header, .artistWaitScreen, .guessScreen, .allSolutionScreen, .solutionScreen, .disconnect {
 	display: none;
 }
-*/
+
 
 #main, #image, #solution, #artistSolution {
 	border:1px solid #000000;
