@@ -143,6 +143,13 @@ exports.init = function(io) {
 		 */
 		socket.on('disconnect', function () {
 			io.emit('gameDisconnected');
+			currentPlayers = 0; // keep track of the number of players
+			players = []; // keeps track of all the players in the game
+			artistID = -1; // the current artist that is drawing
+			answers = [];
+			word = "";
+			wordCollection = [];
+			usedWords = [];
 		});
 	});
 }
