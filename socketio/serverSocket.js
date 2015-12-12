@@ -104,7 +104,7 @@ exports.init = function(io) {
 			socket.emit('showAnswer', {correctAnswer: word, answerCorrect: correct, image: img});
 
 			if(answers.length == currentPlayers - 1) {
-				io.sockets.connected[artistID].emit('showPlayerGuesses', {guesses: answers, image: img, imgCollection: imgCollection});
+				io.sockets.connected[artistID].emit('showPlayerGuesses', {guesses: answers, image: img, imgCollection: oldImages});
 			}
 
 		});
