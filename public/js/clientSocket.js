@@ -42,9 +42,15 @@ $(document).ready(function(){
 	socket.on('displayImg', function (data) {
 		console.log(data.imgs);
 		if(data.imgs.length == 0) {
-			$('#canvasImage').append('<h3>No previous images</h3>');
-			$('#otherDrawing').css('display', 'none');
+			clearCanvas("otherDrawing");
+			var canvas = document.getElementById("otherDrawing");
+			var ctx = canvas.getContext("2d");
+			ctx.font = "Futura";
+			ctx.fillStyle = "blue";
+			ctx.textAlign = "center";
+			ctx.fillText("No Other Drawings", canvas.width/2, canvas.height/2); 
 		} else {
+			clearCanvas("otherDrawing");
 			var i = Math.floor((Math.random() * data.imgs.length));
 			redrawImage('otherDrawing', data.imgs[i].image);
 		}
