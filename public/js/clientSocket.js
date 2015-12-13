@@ -77,8 +77,11 @@ $(document).ready(function(){
 	});
 
 	$('#startGame').click(function() {
+		console.log('Start Game!');
 		$.getJSON("wordCollection.json", function(responseObject) {
+		  console.log('Retrieving words');
 	      words = responseObject.wordCollection;
+	      console.log(words);
 	    });  // getJSON
 		socket.emit('gameStarted', {words: words});
 	});
