@@ -27,6 +27,13 @@ exports.init = function(io) {
 	    });
 	    setTimeout(sendHeartbeat, 8000);
 
+	    $.getJSON("wordCollection.json", function(responseObject, diditwork) {
+		  console.log(diditwork);
+		  console.log('Retrieving words');
+	      wordCollection = responseObject.wordCollection;
+	      console.log(words);
+	    });  // getJSON
+
 		function getNewWord() {
 			var i = Math.floor((Math.random() * wordCollection.length));
 			while(usedWords.length!=wordCollection.length && !contains(wordCollection[i].word)) {
@@ -79,7 +86,6 @@ exports.init = function(io) {
 		// When the artist clicks start game
 		socket.on('gameStarted', function (data) {
 			console.log('Game Started');
-			wordCollection = data.words;
 			word = getNewWord();
 			usedWords.push(word);
 			retrieveImg(word);
