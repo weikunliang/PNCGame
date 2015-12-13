@@ -44,6 +44,7 @@ $(document).ready(function(){
 		console.log(data.imgs);
 		if(data.imgs.length == 0) {
 			$('#canvasImage').append('<h3>No previous images</h3>');
+			$('#otherDrawing').css('display', 'none');
 		} else {
 			var i = Math.floor((Math.random() * data.imgs.length));
 			redrawImage('otherDrawing', data.imgs[i].image);
@@ -79,9 +80,6 @@ $(document).ready(function(){
 		$.getJSON("wordCollection.json", function(responseObject) {
 	      words = responseObject.wordCollection;
 	    });  // getJSON
-	    words = [
-	{ "word":"Cat"}, { "word":"Windmill"}, { "word":"Gingerbread"}, { "word":"Throne"}, { "word":"String"}, { "word":"Dog"}, { "word":"Stairs"}, { "word":"Frankenstein"}, { "word":"Goldfish"}, { "word":"Violin"}, { "word":"Head"}, { "word":"Football"}, { "word":"Dance"}, { "word":"Alligator"}, { "word":"Stop"}, { "word":"Swing"}, { "word":"Mailbox"}, { "word":"Spider man"}, { "word":"Puppet"}, { "word":"Penguin"}, { "word":"Shovel"}, { "word":"Popcorn"}, { "word":"Butter"}, { "word":"Haircut"}, { "word":"Shopping trolley"}, { "word":"Lipstick"}, { "word":"Soap"}, { "word":"Mop"}, { "word":"Food"}, { "word":"Glue"}, { "word":"Hot"}, { "word":"See-saw"}, { "word":"Jellyfish"}, { "word":"Scarf"}, { "word":"Seashell"}, { "word":"Rain"}, { "word":"Bike"}, { "word":"Roof"}, { "word":"Bear"}, { "word":"Elbow"}, { "word":"Earthquake"}, { "word":"Summer"}, { "word":"Snowball"}, { "word":"Guitar"}, { "word":"Alarm"}, { "word":"Volleyball"}
-	];
 		socket.emit('gameStarted', {words: words});
 	});
 
