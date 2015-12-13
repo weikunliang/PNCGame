@@ -17,7 +17,6 @@ exports.init = function(io) {
 	    io.sockets.emit('ping', { beat : 1 });
 	}
 
-
     // When a new connection is initiated
 	io.sockets.on('connection', function (socket) {
 		console.log('Connection started');
@@ -26,13 +25,6 @@ exports.init = function(io) {
 	        console.log("Pong received from client");
 	    });
 	    setTimeout(sendHeartbeat, 8000);
-
-	    $.getJSON("wordCollection.json", function(responseObject, diditwork) {
-		  console.log(diditwork);
-		  console.log('Retrieving words');
-	      wordCollection = responseObject.wordCollection;
-	      console.log(words);
-	    });  // getJSON
 
 		function getNewWord() {
 			var i = Math.floor((Math.random() * wordCollection.length));
@@ -86,6 +78,7 @@ exports.init = function(io) {
 		// When the artist clicks start game
 		socket.on('gameStarted', function (data) {
 			console.log('Game Started');
+			wordCollection = data.words;
 			word = getNewWord();
 			usedWords.push(word);
 			retrieveImg(word);
