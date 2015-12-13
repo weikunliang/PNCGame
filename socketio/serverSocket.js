@@ -125,6 +125,8 @@ exports.init = function(io) {
 			artistID = getNewArtist();
 			answers = [];
 			word = getNewWord();
+			usedWords.push(word);
+			retrieveImg(word);
 			io.sockets.connected[artistID].emit('displayNewRoundArtist', {word: word});
 			for(var i=0; i<players.length; i++) {
 				var currID = players[i].playerId;
