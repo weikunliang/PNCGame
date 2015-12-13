@@ -82,7 +82,7 @@ exports.init = function(io) {
 			wordCollection = data.words;
 			word = getNewWord();
 			usedWords.push(word);
-			retrieveImg("String"); //////////////////////////////////////////////////////////////////////////////
+			retrieveImg("Bear");
 			socket.emit('drawImage', {word: word});
 			socket.broadcast.emit('waitForArtist');
 		});
@@ -106,7 +106,7 @@ exports.init = function(io) {
 		socket.on('submitAnswer', function (data) {
 			var correct;
 			answers.push(data.answer);
-			if(data.answer == word) {
+			if(data.answer.toLowerCase() == word.toLowerCase()) {
 				correct = true;
 			} else {
 				correct = false;
@@ -144,7 +144,7 @@ exports.init = function(io) {
 			word = '';
 			wordCollection = [];
 			usedWords = [];
-		})
+		});
 
 		/*
 		 * Upon this connection disconnecting (sending a disconnect event)

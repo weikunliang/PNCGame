@@ -42,13 +42,13 @@ $(document).ready(function(){
 
 	socket.on('displayImg', function (data) {
 		console.log(data.imgs);
-		for(var i=0;i<data.imgs.length; i++) {
-			var image = new Image();
-			image.id = "pic"
-			image.src = data.imgs[i].image;
-			$('#canvasImage').append(image);
+		if(data.imgs.length == 0) {
+			$('#canvasImage').append('<h3>No previous images</h3>');
+		} else {
+			var i = Math.floor((Math.random() * data.imgs.length));
+			redrawImage('otherDrawing', data.imgs[i].image);
 		}
-	})
+	});
 
 	socket.on('artistWaiting', function (data) {
 		console.log('Artist Waiting...');
@@ -134,15 +134,11 @@ $(document).ready(function(){
 	});
 
 	socket.on('showPlayerGuesses', function (data) {
+		$('#allAnswers ul').empty();
 		for(var i=0; i<data.guesses.length; i++) {
 			$('#allAnswers ul').append('<li class="list-group-item">' + data.guesses[i] + '</li>');
 		}
-		// for(var i=0;i<data.imgCollection; i++) {
-		// 	var image = new Image();
-		// 	image.id = "pic"
-		// 	image.src = canvas.toDataURL();
-		// 	$('#canvasImage').append(image);
-		// }
+
 		$('.artistWaitScreen').fadeOut();
 		$('.allSolutionScreen').fadeIn();
 	});
