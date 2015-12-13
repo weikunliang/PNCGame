@@ -82,7 +82,7 @@ exports.init = function(io) {
 			wordCollection = data.words;
 			word = getNewWord();
 			usedWords.push(word);
-			retrieveImg("Bear");
+			retrieveImg(word);
 			socket.emit('drawImage', {word: word});
 			socket.broadcast.emit('waitForArtist');
 		});
