@@ -52,7 +52,7 @@ exports.init = function(io) {
 			savedImages.retrieve('savedImages', {"word":word}, function(result) {
 				console.log(result);
 				oldImages = result;
-				socket.emit('displayImg', {imgs:result});
+				io.sockets.connected[artistID].emit('displayImg', {imgs:result});
 			});
 		}
 
