@@ -101,16 +101,3 @@ doDelete = function(req, res) {
     });
 
 }
-
-/*
- * How to test:
- *  - Create a test web page
- *  - Use REST Console for Chrome
- *    (If you use this option, be sure to set the Body Content Headers Content-Type to:
- *    application/x-www-form-urlencoded . Else body-parser won't work correctly.)
- *  - Use CURL (see tests below)
- *    curl comes standard on linux and MacOS.  For windows, download it from:
- *    http://curl.haxx.se/download.html
- *
- * Tests via CURL for Create and Update (Retrieve can be done from browser)
- */
