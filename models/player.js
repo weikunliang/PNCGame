@@ -3,14 +3,14 @@
  */
 
 // Define a constructor function to initialize a new Player object
-function Player(player_id, username, isArtist) { 	
+function Player(player_id, username, is_child) { 	
 	this.playerId = player_id; // the socket ID of the player
 	this.username = username;  // the player's username
-	this.isArtist = isArtist;  // whether the player is drawing or not
+	this.isChild = is_child;  // whether the player is drawing or not
 }						
 
-Player.prototype.isArtist = function() { // checks if the player is an artist
-	return this.isArtist;
+Player.prototype.isChild = function() { // checks if the player is an artist
+	return this.isChild;
 };
 
 Player.prototype.getUsername = function() { // gets the username of the player
