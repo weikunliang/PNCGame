@@ -1,0 +1,12 @@
+/* Initially set all the HTML divs to display: none and then display them one by one */
+.spinGame, .spinCategory, .waitingForParent, .waitingForTeen, .inputInformation, .missingDigitScreen {
+	display: none;
+}
+
+.teenWin, .parentWin {
+	display: none;
+}
+
+#missingDigitList li {
+    list-style-type: none;
+}

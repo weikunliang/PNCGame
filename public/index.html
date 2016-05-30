@@ -2,6 +2,7 @@
 	<head>    
 		<meta name="viewport" content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0" />
 		<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>  
+		<script type="text/javascript" src="/js/bootstrap.min.js"></script>  
 		<!-- Notice that socket.io adds a path to its client-side js that is not in /public -->
 		<script src="/socket.io/socket.io.js"></script>
 		<!-- This is my example client-side javascript that uses socket.io -->
@@ -15,8 +16,9 @@
 		<div class="container initialPage">
 			<div class="row">
 			  <div class="col-xs-12 col-md-4 col-centered">
-			  	<h1>PNC Game</h1> <br><br>
-				<h3>Enter Name</h3>
+			  	<h1>PNC Game</h1>
+			  	<p>Welcome!</p>
+				<p>Enter Name</p>
 				<div class="form-group input-group-lg">
 				  <input id="username" type="text" name="username" class="form-control input-lg" placeholder="name"><br>
 				  <input type="radio" name="player" value="parent"> Parent<br>
@@ -26,6 +28,121 @@
 			  </div>
 			</div>
 		</div>
+
+		<div class="container spinGame">
+			<div class="row">
+			  <div class="col-xs-12 col-md-4 col-centered">
+			  	<button id="bonkers" class="btn btn-info btn-lg" type="button">Bonkers</button>
+			  	<button id="digit" class="btn btn-info btn-lg" type="button">Missing Digit</button>
+			  </div>
+			</div>
+		</div>
+
+		<div class="container spinCategory">
+			<div class="row">
+			  <div class="col-xs-12 col-md-4 col-centered">
+			  	<button id="home" class="btn btn-info btn-lg" type="button">Home</button>
+			  	<button id="travel" class="btn btn-info btn-lg" type="button">Travel</button>
+			  </div>
+			</div>
+		</div>
+
+		<div class="container waitingForParent">
+			<div class="row">
+			  <div class="col-xs-12 col-md-4 col-centered">
+			  	<h3>Waiting for the parent to input information</h3>
+			  </div>
+			</div>
+		</div>
+
+		<div class="container waitingForTeen">
+			<div class="row">
+			  <div class="col-xs-12 col-md-4 col-centered">
+			  	<h3>Waiting for the teen to input information</h3>
+			  </div>
+			</div>
+		</div>
+
+		<div class="container inputInformation">
+			<div class="row">
+			  <div class="col-xs-12 col-md-4 col-centered">
+			  	<h3>Category: <div id="category"></div></h3>
+
+			  		Item:
+			  		<select id="item" name="item">
+						<option value="electric">Electric</option>
+						<option value="rent">Rent</option>
+					</select>
+
+					Cost: <input id="cost" type="text" name="cost">
+					Per: 
+					<input type="radio" name="per" value="week" checked> Week<br>
+					<input type="radio" name="per" value="month"> Month<br>
+					<input type="radio" name="per" value="year"> Year
+
+				<button id="costSubmit" class="btn btn-info btn-lg" type="button">Done</button>
+			  </div>
+			</div>
+		</div>
+
+		<div class="container missingDigitScreen">
+			<div class="row">
+			  <div class="col-xs-12 col-md-4 col-centered">
+			  	<h1>Missing Digit</h1>
+			  	<p>Category: <div id="categoryName"></div></p>
+			  	<p>Guess the Cost: Cost payment per <div id="perValue"></div></p>
+			  	<p>Directions: Select the missing number</p>
+
+			  	<p>
+			  		$ 
+			  		<div class = digitList>
+				  		<ul id="missingDigitList"></ul>
+			  		</div>
+
+			  		<div class = choices></div>
+			  	</p>	
+			  	<button id="guess" class="btn btn-info btn-lg" type="button">Guess</button>
+
+			  	<div class="modal fade teenWin" tabindex="-1" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title">Correct</h4>
+							</div>
+							<div class="modal-body">
+								<p>+1 Point for teen</p>
+								<p>You've won the game</p>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+
+				<div class="modal fade parentWin" tabindex="-1" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title">Wrong</h4>
+							</div>
+							<div class="modal-body">
+								<p>+1 Point for parent</p>
+								<p>You've lost the game</p>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+
+			  </div>
+			</div>
+		</div>
+
+
+
+
+
+
+
 
 	</body>
 </html>
