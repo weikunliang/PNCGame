@@ -28,7 +28,7 @@ $(document).ready(function(){
 
     $('#home').click(function () {
     	$('.spinCategory').fadeOut();
-    	$('#category').text("home");
+    	$('#category').append("Home");
 		$('.inputInformation').fadeIn();
 		socket.emit('categorySelected', {category: "home"});  
     });
@@ -46,8 +46,8 @@ $(document).ready(function(){
     });
 
     socket.on('startGame', function(data) {
-    	$('#categoryName').text(data.category);
-    	$('#perValue').text(data.per);
+    	$('#categoryName').append(data.category);
+    	$('#perValue').append(data.per);
     	var missingID = data.missing;
     	var digitArray = data.digits;
   		var element;
