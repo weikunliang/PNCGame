@@ -1,9 +1,9 @@
 /* Initially set all the HTML divs to display: none and then display them one by one */
-.spinGame, .spinCategory, .waitingForParent, .waitingForTeen, .inputInformation, .missingDigitScreen {
+.spinGame, .spinCategory, .waitingForParent, .waitingForTeen, .inputInformation, .missingDigitScreen, .bonkersScreen {
 	display: none;
 }
 
-.teenWin, .parentWin {
+.teenWin, .parentWin, .wrongCode {
 	display: none;
 }
 
