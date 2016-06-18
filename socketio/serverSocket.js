@@ -96,7 +96,7 @@ exports.init = function(io) {
 					rooms[i].per = data.per;
 					rooms[i].digitArray = data.cost.toString(10).split("").map(function(t){return parseInt(t)});
 					rooms[i].missingId = Math.floor((Math.random() * (rooms[i].digitArray.length-1)) + 1);
-					rooms[i].guess = Math.floor((Math.random() * (data.cost-1)) + 1);
+					rooms[i].guess = Math.floor((Math.random() * ((data.cost-1)*2)) + 1);
 					break;
 				}
 			}
@@ -120,6 +120,25 @@ exports.init = function(io) {
 			}
 
 			if(data.guess == r.digitArray[r.missingId]) {
+				io.sockets.connected[r.teenID].emit('teenWin');
+			} else {
+				io.sockets.connected[r.teenID].emit('parentWin');
+			}
+		});
+
+		socket.on('bonkersResult', function (data) {
+			var teenID = socket.id;
+			var r;
+			for(var i=0; i<rooms.length; i++) {
+				if(rooms[i].getTeen() == teenID) {
+					r = rooms[i];
+					break;
+				}
+			}
+			var level = data.guess;
+			console.log(level);
+			if(((level == "up") && (r.guess < r.cost)) || ((level == "down") && (r.guess > r.cost))) {
+				console.log(1);
 				io.sockets.connected[r.teenID].emit('teenWin');
 			} else {
 				io.sockets.connected[r.teenID].emit('parentWin');

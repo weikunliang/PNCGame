@@ -26,8 +26,8 @@
 					  <input type="radio" name="player" value="teen"> Teen<br>
 				  </div>
 				</div>
-				<button id="create" class="btn btn-info btn-lg" type="button">Create Room</button>
-				<button id="join" class="btn btn-info btn-lg" type="button">Join Room</button>
+				<button id="create" class="btn btn-info btn-lg" type="button">Create Game</button>
+				<button id="join" class="btn btn-info btn-lg" type="button">Join Game</button>
 				
 				<div class="modal fade wrongCode" tabindex="-1" role="dialog">
 					<div class="modal-dialog">
@@ -36,7 +36,7 @@
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							</div>
 							<div class="modal-body">
-								<p>Room does not exist</p>
+								<p>Game does not exist</p>
 							</div>
 						</div><!-- /.modal-content -->
 					</div><!-- /.modal-dialog -->
@@ -174,7 +174,9 @@
 				  	<h5>Directions: Indicate where the price is HIGHER or LOWER</h5>
 			  	</div><br>
 			  	<h2 id="bonkersNumber"></h2>
-			  	<button id="guess" class="btn btn-info btn-lg" type="button">Guess</button>
+			  	<input type="radio" name="bonkersVal" value="up"> + <br>
+				<input type="radio" name="bonkersVal" value="down"> - <br>
+			  	<button id="guessBonkers" class="btn btn-info btn-lg" type="button">Guess</button>
 
 			  	<div class="modal fade teenWin" tabindex="-1" role="dialog">
 					<div class="modal-dialog">

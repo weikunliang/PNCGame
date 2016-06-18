@@ -128,8 +128,14 @@ $(document).ready(function(){
         $('.bonkersScreen').fadeIn();
     });
 
+    $('#guessBonkers').click(function () {
+        var guess = $("input[name=bonkersVal]:checked").val();
+        socket.emit('bonkersResult', {guess: guess});
+    });
 
-
+    $(".close").click(function () {
+            $('.modal-backdrop').fadeOut();
+    });
 
 
 });
