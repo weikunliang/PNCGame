@@ -23,6 +23,10 @@ $(document).ready(function(){
         $('.wrongCode').modal()
     });
 
+    socket.on('roomExists', function(data) {
+        $('.roomExists').modal()
+    });
+
 	socket.on('choseGame', function(data){
 		$('.initialPage').fadeOut();
 		$('.spinGame').fadeIn();
@@ -45,11 +49,45 @@ $(document).ready(function(){
         socket.emit('gameSelected', {game: "bonkers"});    
     });
 
+    $('#balance').click(function () {
+        $('.spinGame').fadeOut();
+        $('.waitingForParent').fadeIn();
+        socket.emit('gameSelected', {game: "balance"});
+    });
+
     $('#home').click(function () {
     	$('.spinCategory').fadeOut();
     	$('#category').append("Home");
 		$('.inputInformation').fadeIn();
 		socket.emit('categorySelected', {category: "home"});  
+    });
+
+    $('#travel').click(function () {
+        $('.spinCategory').fadeOut();
+        $('#category').append("Travel");
+        $('.inputInformation').fadeIn();
+        socket.emit('categorySelected', {category: "travel"});  
+    });
+
+    $('#fun').click(function () {
+        $('.spinCategory').fadeOut();
+        $('#category').append("Fun");
+        $('.inputInformation').fadeIn();
+        socket.emit('categorySelected', {category: "fun"});  
+    });
+
+    $('#finance').click(function () {
+        $('.spinCategory').fadeOut();
+        $('#category').append("Finance");
+        $('.inputInformation').fadeIn();
+        socket.emit('categorySelected', {category: "finance"});  
+    });
+
+    $('#purchases').click(function () {
+        $('.spinCategory').fadeOut();
+        $('#category').append("Purchases");
+        $('.inputInformation').fadeIn();
+        socket.emit('categorySelected', {category: "purchases"});  
     });
 
     $('#costSubmit').click(function () {
@@ -117,13 +155,17 @@ $(document).ready(function(){
 		$('.teenWin').modal()
 	});
 
+    $(".close").click(function () {
+        $('.modal-backdrop').fadeOut();
+    });
+
 
     // BONKERS GAME
 
     socket.on('startBonkers', function (data) {
         $('#categoryNameBonkers').append(data.category);
         $('#perValueBonkers').append(data.per);
-        $('#bonkersNumber').append(data.guess)
+        $('#bonkersNumber').append(data.guess);
         $('.waitingForParent').fadeOut();
         $('.bonkersScreen').fadeIn();
     });
@@ -133,9 +175,40 @@ $(document).ready(function(){
         socket.emit('bonkersResult', {guess: guess});
     });
 
-    $(".close").click(function () {
-            $('.modal-backdrop').fadeOut();
+    // BALANCE GAME
+
+    socket.on('startBalance', function (data) {
+        $('.categoryNameBalance').append(data.category);
+        $('.perValueBalance').append(data.per);
+        $('.waitingForParent').fadeOut();
+        $('.balanceScreen').fadeIn();
+
+
+        $('#startVal').append(data.displayVal);
+        // append the guesses
+        $('#balanceChoices').append('<input id=' + data.val1 + ' type="checkbox" name="balanceVal" value=' + data.val1 + '> ' + data.val1 + '<br>');
+        $('#balanceChoices').append('<input id=' + data.val2 + ' type="checkbox" name="balanceVal" value=' + data.val2 + '> ' + data.val2 + '<br>');
+        $('#balanceChoices').append('<input id=' + data.val3 + ' type="checkbox" name="balanceVal" value=' + data.val3 + '> ' + data.val3 + '<br>');
+
     });
+    
+    $('#guessBalance').click(function () {       
+        var one = false;
+        var two = false;
+        var three = false;
+        if($('#balanceChoices').children().first().is(":checked")){
+            one = true;
+        }
+        if($('#balanceChoices').children().first().next().next().is(":checked")){
+            two = true;
+        }
+        if($('#balanceChoices').children().first().next().next().next().next().is(":checked")){
+            three = true;
+        }
+        socket.emit('balanceResult', {one: one, two: two, three: three});
+
+    });
+
 
 
 });

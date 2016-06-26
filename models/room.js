@@ -15,6 +15,12 @@ function Room(id) {
 
 	// variables for bonkers
 	this.guess;
+
+	// variables for balance
+	this.displayVal;
+	this.val1;
+	this.val2;
+	this.val3;
 }						
 
 Room.prototype.getID = function() { // checks if the player is an artist

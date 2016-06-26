@@ -42,6 +42,19 @@
 					</div><!-- /.modal-dialog -->
 				</div><!-- /.modal -->
 
+				<div class="modal fade roomExists" tabindex="-1" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							</div>
+							<div class="modal-body">
+								<p>Room name is taken</p>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+
 
 			  </div>
 			</div>
@@ -212,6 +225,53 @@
 			</div>
 		</div>
 
+		<div class="container balanceScreen">
+			<div class="row">
+			  <div class="col-xs-12 col-md-4 col-centered">
+			  	<h2>Balance</h2><br>
+			  	<div class="gameDescription">
+				  	<h5 class="categoryNameBalance">Category: </h5>
+				  	<h5 class="perValueBalance">Guess the Cost: Cost payment per </h5>
+				  	<h5>Select bags to guess the amount spent on <div class="categoryNameBalance"></div> per <div class="perValueBalance"></div></h5>
+				  	<h5>Total: $<div id="startVal"></div></h5>
+				  	<div id="balanceChoices"></div>
+			  	</div><br>
+			  	
+			  	<button id="guessBalance" class="btn btn-info btn-lg" type="button">Guess</button>
+
+			  	<div class="modal fade teenWin" tabindex="-1" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title">Correct</h4>
+							</div>
+							<div class="modal-body">
+								<p>+1 Point for teen</p>
+								<p>You've won the game</p>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+
+				<div class="modal fade parentWin" tabindex="-1" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title">Wrong</h4>
+							</div>
+							<div class="modal-body">
+								<p>+1 Point for parent</p>
+								<p>You've lost the game</p>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+
+			  </div>
+			</div>
+		</div>
 
 
 
